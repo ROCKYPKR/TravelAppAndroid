@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.ToursAndPackagesFragment">
+    tools:context=".fragment.HotelListFragment">
 
     <TextView
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/tours_and_packages" />
+        android:text="@string/book_a_hotel" />
 
 </FrameLayout>

@@ -58,8 +58,11 @@
 
     <TextView
         android:id="@+id/tv_sign_up_prompt"
+        style="@style/secondaryTextMedium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
         android:text="@string/sign_up_prompt"
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"

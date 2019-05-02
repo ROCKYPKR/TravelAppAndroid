@@ -1,11 +1,8 @@
 package com.eshna.travelapp.activity;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -17,9 +14,9 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.eshna.travelapp.R;
-import com.eshna.travelapp.fragment.BookHotelFragment;
+import com.eshna.travelapp.fragment.HotelListFragment;
 import com.eshna.travelapp.fragment.HomeFragment;
-import com.eshna.travelapp.fragment.ToursAndPackagesFragment;
+import com.eshna.travelapp.fragment.PackageListFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -37,14 +34,14 @@ public class MainActivity extends AppCompatActivity
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.flContent, homeFragment).commit();
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -100,19 +97,23 @@ public class MainActivity extends AppCompatActivity
                 fragmentClass = HomeFragment.class;
                 break;
             case R.id.nav_tours_and_packages:
-                fragmentClass = ToursAndPackagesFragment.class;
+                fragmentClass = PackageListFragment.class;
                 break;
             case R.id.nav_book_a_hotel:
-                fragmentClass = BookHotelFragment.class;
+                fragmentClass = HotelListFragment.class;
+                break;
+            case R.id.nav_profile:
+                Toast.makeText(this, getResources().getString(R.string.not_implemented), Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_about:
                 Toast.makeText(this, getResources().getString(R.string.not_implemented), Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.nav_settings:
+            case R.id.nav_share:
                 Toast.makeText(this, getResources().getString(R.string.not_implemented), Toast.LENGTH_SHORT).show();
                 break;
             default:
                 fragmentClass = HomeFragment.class;
+                break;
         }
 
         try {

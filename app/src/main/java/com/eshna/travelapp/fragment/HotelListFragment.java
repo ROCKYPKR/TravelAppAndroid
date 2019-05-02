@@ -13,10 +13,10 @@ import com.eshna.travelapp.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ToursAndPackagesFragment extends Fragment {
+public class HotelListFragment extends Fragment {
 
 
-    public ToursAndPackagesFragment() {
+    public HotelListFragment() {
         // Required empty public constructor
     }
 
@@ -25,7 +25,7 @@ public class ToursAndPackagesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tours_and_packages, container, false);
+        return inflater.inflate(R.layout.fragment_hote_listl, container, false);
     }
 
 }
