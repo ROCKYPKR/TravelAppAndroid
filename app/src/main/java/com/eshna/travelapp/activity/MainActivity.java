@@ -1,5 +1,6 @@
 package com.eshna.travelapp.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -103,7 +104,7 @@ public class MainActivity extends AppCompatActivity
                 fragmentClass = HotelListFragment.class;
                 break;
             case R.id.nav_profile:
-                Toast.makeText(this, getResources().getString(R.string.not_implemented), Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainActivity.this, ProfileActivity.class));
                 break;
             case R.id.nav_about:
                 Toast.makeText(this, getResources().getString(R.string.not_implemented), Toast.LENGTH_SHORT).show();
@@ -122,18 +123,18 @@ public class MainActivity extends AppCompatActivity
             e.printStackTrace();
         }
 
-        // Insert the fragment by replacing any existing fragment
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
 
-        // Highlight the selected item has been done by NavigationView
-        item.setChecked(true);
-
-        // Set action bar title
-        setTitle(item.getTitle());
+        if (fragment!=null){
+            // Insert the fragment by replacing any existing fragment
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+            // Highlight the selected item has been done by NavigationView
+            item.setChecked(true);
+            // Set action bar title
+            setTitle(item.getTitle());
+        }
 
         // Close the navigation drawer
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
