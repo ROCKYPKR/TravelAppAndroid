@@ -2,6 +2,7 @@ package com.eshna.travelapp.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -18,7 +19,7 @@ import android.widget.Toast;
 import com.eshna.travelapp.R;
 import com.eshna.travelapp.api.ApiClient;
 import com.eshna.travelapp.api.ApiInterface;
-import com.eshna.travelapp.apiResponse.RegistrationResponse;
+import com.eshna.travelapp.apiResponse.UserResponse;
 import com.eshna.travelapp.utility.UserLocalStore;
 
 import java.util.ArrayList;
@@ -154,11 +155,11 @@ public class SignUpActivity extends AppCompatActivity {
 
         Log.d(LOG_TAG, userDetails.toString());
 
-        Call<RegistrationResponse> call = apiInterface.getUserAfterRegistration(userDetails);
+        Call<UserResponse> call = apiInterface.getUserAfterRegistration(userDetails);
 
-        call.enqueue(new Callback<RegistrationResponse>() {
+        call.enqueue(new Callback<UserResponse>() {
             @Override
-            public void onResponse(Call<RegistrationResponse> call, Response<RegistrationResponse> response) {
+            public void onResponse(@NonNull Call<UserResponse> call, @NonNull Response<UserResponse> response) {
                 Log.d(LOG_TAG, String.valueOf(response.code()));
                 Log.d(LOG_TAG, response.toString());
 
@@ -187,7 +188,7 @@ public class SignUpActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<RegistrationResponse> call, Throwable t) {
+            public void onFailure(@NonNull Call<UserResponse> call, @NonNull Throwable t) {
                 Log.e(LOG_TAG, " onFailure " + t.toString());
                 t.printStackTrace();
                 Toast.makeText(SignUpActivity.this, "Failure", Toast.LENGTH_SHORT).show();

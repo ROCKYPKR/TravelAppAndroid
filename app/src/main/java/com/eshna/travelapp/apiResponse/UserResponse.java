@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.Arrays;
 
-public class RegistrationResponse {
+public class UserResponse {
     @SerializedName("error")
     private Boolean error;
 
@@ -63,7 +63,7 @@ public class RegistrationResponse {
 
     @Override
     public String toString() {
-        return "RegistrationResponse{" +
+        return "UserResponse{" +
                 "error=" + error +
                 ", message='" + message + '\'' +
                 ", code='" + code + '\'' +
