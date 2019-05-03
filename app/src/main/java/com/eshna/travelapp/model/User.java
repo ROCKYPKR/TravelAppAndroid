@@ -1,11 +1,19 @@
 package com.eshna.travelapp.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class User {
+    @SerializedName("id")
     private int id;
+    @SerializedName("name")
     private String name;
+    @SerializedName("email")
     private String email;
+    @SerializedName("api_token")
     private String apiToken;
+    @SerializedName("country")
     private String country;
+    @SerializedName("gender")
     private String gender;
 
     public User(int id, String name, String email, String apiToken, String country, String gender) {

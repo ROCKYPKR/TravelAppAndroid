@@ -7,6 +7,17 @@
     android:layout_margin="@dimen/margin_padding_size_small"
     tools:context=".activity.SignUpActivity">
 
+    <ProgressBar
+        android:id="@+id/loading_registration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="parent" />
+
     <TextView
         android:id="@+id/tv_signup_title"
         style="@style/primaryTextLarge"
@@ -90,7 +101,7 @@
         app:layout_constraintTop_toBottomOf="@+id/til_password">
 
         <android.support.design.widget.TextInputEditText
-            android:id="@+id/et_password_hint"
+            android:id="@+id/et_password_comfirm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/confirm_password_hint"
@@ -100,11 +111,12 @@
 
     <Spinner
         android:id="@+id/spinner_country"
+        style="@style/secondaryTextMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="@dimen/margin_padding_size_small"
         app:layout_constraintBottom_toTopOf="@+id/rg_gender"
         app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/til_confirm_password">
 
@@ -116,7 +128,6 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@id/btn_sign_up"
         app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner_country">
 

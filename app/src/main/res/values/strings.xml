@@ -29,4 +29,10 @@
 
     <!--Validation Strings-->
     <string name="incorrect_name">Please enter name</string>
+    <string name="incorrect_email">Please enter correct email</string>
+    <string name="enter_password">Please enter a password</string>
+    <string name="password_do_not_match">Password do not match</string>
+    <string name="country">Please select a country</string>
+    <string name="gender">Please select your gender</string>
+
 </resources>

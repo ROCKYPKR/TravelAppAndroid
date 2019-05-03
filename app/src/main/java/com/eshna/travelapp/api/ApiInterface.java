@@ -1,5 +1,12 @@
 package com.eshna.travelapp.api;
 
+import com.eshna.travelapp.apiResponse.RegistrationResponse;
+
+import java.util.Map;
+
+import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 public interface ApiInterface {
@@ -11,12 +18,12 @@ public interface ApiInterface {
 //            @Field("device_token") String deviceToken
 //    );
 //
-//    /*
-//    Registration: Normal, facebook and google
-//     */
-//    @Headers({"Content-type: application/json", "Accept: application/json"})
-//    @POST("api/v1/register")
-//    Call<UserLoginResponse> getUserAfterRegistration(
-//            @Body Map<String, String> userDetails
-//    );
+    /*
+    Registration
+     */
+    @Headers({"Content-type: application/json", "Accept: application/json"})
+    @POST("api/register")
+    Call<RegistrationResponse> getUserAfterRegistration(
+            @Body Map<String, String> userDetails
+    );
 }
