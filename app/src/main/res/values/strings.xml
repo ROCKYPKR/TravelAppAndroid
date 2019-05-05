@@ -34,5 +34,7 @@
     <string name="password_do_not_match">Password do not match</string>
     <string name="country">Please select a country</string>
     <string name="gender">Please select your gender</string>
+    <string name="country_hint">Country</string>
+    <string name="gender_hint">Gender</string>
 
 </resources>

@@ -31,8 +31,6 @@ import retrofit2.Response;
 public class LoginActivity extends AppCompatActivity {
     private static final String LOG_TAG = LoginActivity.class.getSimpleName();
 
-    private boolean loggedInCondition;
-
     @BindView(R.id.til_email_login)
     TextInputLayout emailTIL;
     @BindView(R.id.et_email)
@@ -111,8 +109,7 @@ public class LoginActivity extends AppCompatActivity {
                             userLocalStore.setUserLoggedIn(true); //set boolean user logged in
 
                             //On Successful login, navigate to other activity
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            startActivity(intent);
+                            navigateToDashboard();
                             LoginActivity.this.finish();
                         }
                     } else {

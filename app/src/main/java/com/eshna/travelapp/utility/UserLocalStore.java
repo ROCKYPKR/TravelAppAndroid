@@ -24,7 +24,7 @@ public class UserLocalStore {
         userLocalDatabaseEditor.putInt("id", user.getId());
         userLocalDatabaseEditor.putString("name", user.getName());
         userLocalDatabaseEditor.putString("email", user.getEmail());
-        userLocalDatabaseEditor.putString("api_token", user.getApiToken());
+        userLocalDatabaseEditor.putString("api_token", "Bearer "+user.getApiToken());
         userLocalDatabaseEditor.putString("country", user.getCountry());
         userLocalDatabaseEditor.putString("gender", user.getGender());
         userLocalDatabaseEditor.apply();
