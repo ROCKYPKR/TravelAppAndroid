@@ -1,10 +1,14 @@
 package com.eshna.travelapp.activity;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -87,33 +91,118 @@ public class ProfileActivity extends AppCompatActivity {
         return initials.toUpperCase(Locale.ENGLISH);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_user_settings, menu);
+        return true;
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        //for now we only have one menuItem ie. back button.
-        UserLocalStore userLocalStore = new UserLocalStore(getApplicationContext());
-        User user = userLocalStore.getLoggedInUser();
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                //for now we only have one menuItem ie. back button.
+                UserLocalStore userLocalStore = new UserLocalStore(getApplicationContext());
+                User user = userLocalStore.getLoggedInUser();
 
-        HashMap<String, String> updatedUserDetails = new HashMap<>();
 
-        if (!nameET.getText().toString().trim().equals(user.getName()) && !nameET.getText().toString().isEmpty()){
-            //name is updated and is not empty
-            String name = nameET.getText().toString().trim();
-            updatedUserDetails.put("name", name);
 
-            hitUpdateUserApi(updatedUserDetails, user.getApiToken());
-        } else {
-            //just finish this activity without hitting the api or updating values in the shared prefs
-            ProfileActivity.this.finish();
+                if (!nameET.getText().toString().trim().equals(user.getName()) && !nameET.getText().toString().isEmpty()){
+                    //name is updated and is not empty
+                    String name = nameET.getText().toString().trim();
+
+
+                    hitUpdateUserApi(name, user.getApiToken());
+                } else {
+                    //just finish this activity without hitting the api or updating values in the shared prefs
+                    ProfileActivity.this.finish();
+                }
+                return true;
+
+            case R.id.action_log_out:
+                displayLogOutConfirmation();
+                return true;
+            case R.id.action_change_password:
+                displayPasswordChangeDialog();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
         }
-
-        return super.onOptionsItemSelected(item);
     }
 
-    private void hitUpdateUserApi(HashMap updatedUserDetails, String apiToken) {
+    private void displayPasswordChangeDialog() {
+        Toast.makeText(this, R.string.not_implemented, Toast.LENGTH_SHORT).show();
+        //TODO:Dialog Fragment required to work with the view
+//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        builder.setView(R.layout.dialog_change_password)
+//                .setCancelable(true)
+//                .setPositiveButton(R.string.change, new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        //TODO:hit change password api
+//                        if ()
+//                        changePasswordAPI();
+//                    }
+//                })
+//                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        dialogInterface.dismiss();
+//                    }
+//                });
+//        AlertDialog dialog = builder.create();
+//        dialog.show();
+    }
+
+    private void changePasswordAPI() {
+//        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+//
+//        UserLocalStore userLocalStore = new UserLocalStore(getApplicationContext());
+//
+//        HashMap<String, String> newPass = new HashMap<>();
+//        newPass.put("new_password", name);
+//
+//        Call call = apiInterface.updatePassword(userLocalStore.getLoggedInUser().getApiToken(), );
+    }
+
+    private void displayLogOutConfirmation() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(R.string.log_out_confirmation)
+                .setTitle(R.string.action_log_out)
+                .setCancelable(true)
+                .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        logUserOut();
+                    }})
+                .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    private void logUserOut() {
+        UserLocalStore userLocalStore = new UserLocalStore(getApplicationContext());
+        userLocalStore.clearUserData();
+        userLocalStore.setUserLoggedIn(false);
+
+        startActivity(new Intent(ProfileActivity.this, LoginActivity.class));
+        ProfileActivity.this.finish();
+    }
+
+    private void hitUpdateUserApi(String name, String apiToken) {
 
         showProgressBar();
+
+        HashMap<String, String> updatedUserDetails = new HashMap<>();
+        updatedUserDetails.put("name", name);
 
         ApiInterface apiInterface =
                 ApiClient.getClient().create(ApiInterface.class);

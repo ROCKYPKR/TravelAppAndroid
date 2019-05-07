@@ -1,5 +1,6 @@
 package com.eshna.travelapp.model;
 
+import com.eshna.travelapp.api.ApiClient;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
@@ -55,7 +56,7 @@ public class Package implements Serializable {
     }
 
     public String getPhoto() {
-        return photo;
+        return ApiClient.BASE_URL+"/"+photo;
     }
 
     public int getRating() {

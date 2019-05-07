@@ -46,7 +46,7 @@ public class PackageAdapter  extends RecyclerView.Adapter<PackageAdapter.Package
 
         //setting values here
         if (aPackage.getPhoto() != null && !aPackage.getPhoto().equals("")) {
-            Picasso.with(mContext).load(ApiClient.BASE_URL +"/" + aPackage.getPhoto()).into(packageViewHolder.packageThumbIV);
+            Picasso.with(mContext).load(aPackage.getPhoto()).into(packageViewHolder.packageThumbIV);
         }
         packageViewHolder.packageNameTV.setText(aPackage.getName());
 

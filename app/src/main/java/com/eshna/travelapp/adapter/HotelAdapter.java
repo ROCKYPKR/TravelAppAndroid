@@ -1,6 +1,7 @@
 package com.eshna.travelapp.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -50,10 +51,10 @@ public class HotelAdapter extends RecyclerView.Adapter<HotelAdapter.HotelViewHol
 
         //setting values here
         if (hotel.getPhoto() != null && !hotel.getPhoto().equals("")) {
-            Picasso.with(mContext).load(ApiClient.BASE_URL +"/"+ hotel.getPhoto()).into(hotelViewHolder.hotelThumbIV);
+            Picasso.with(mContext).load(hotel.getPhoto()).into(hotelViewHolder.hotelThumbIV);
         }
         hotelViewHolder.hotelNameTV.setText(hotel.getName());
-        hotelViewHolder.hotelRatingBar.setNumStars(hotel.getOverallRating());
+        hotelViewHolder.hotelRatingBar.setRating(Float.valueOf(hotel.getOverallRating().trim()));
 
     }
 
