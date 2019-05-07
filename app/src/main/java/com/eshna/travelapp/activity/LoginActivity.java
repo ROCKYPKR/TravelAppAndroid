@@ -67,7 +67,6 @@ public class LoginActivity extends AppCompatActivity {
     void attemptLogin() {
 
         if (validateEmail() && validatePassword()){
-            //TODO: Hit api and on successful login call navigateToDashboard
             String email = emailET.getText().toString().trim();
             String password = passwordET.getText().toString().trim();
 
@@ -111,6 +110,8 @@ public class LoginActivity extends AppCompatActivity {
                             //On Successful login, navigate to other activity
                             navigateToDashboard();
                             LoginActivity.this.finish();
+                        } else {
+                            Toast.makeText(LoginActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     } else {
                         Log.e(LOG_TAG, " Response body is null");

@@ -1,25 +1,37 @@
 package com.eshna.travelapp.model;
 
-public class Hotel {
-    private int id;
-    private String name;
-    private String description;
-    private double latitude;
-    private double longitude;
-    private int reviewCount;
-    private int overallRating;
-    private String contact;
+import com.google.gson.annotations.SerializedName;
 
-    public Hotel(int id, String name, String description, double latitude, double longitude, int reviewCount, int overallRating, String contact) {
+import java.io.Serializable;
+
+public class Hotel implements Serializable {
+    @SerializedName("id")
+    private int id;
+    @SerializedName("name")
+    private String name;
+    @SerializedName("photo")
+    private String photo;
+    @SerializedName("description")
+    private String description;
+//    @SerializedName("review_count")
+//    private int reviewCount;
+    @SerializedName("overall_rating")
+    private int overallRating;
+    @SerializedName("contact_number")
+    private String contact;
+    @SerializedName("price")
+    private String price;
+
+    public Hotel(int id, String name, String photo, String description, int overallRating, String contact, String price) {
         this.id = id;
         this.name = name;
+        this.photo = photo;
         this.description = description;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.reviewCount = reviewCount;
         this.overallRating = overallRating;
         this.contact = contact;
+        this.price = price;
     }
+
 
     public int getId() {
         return id;
@@ -29,20 +41,12 @@ public class Hotel {
         return name;
     }
 
+    public String getPhoto() {
+        return photo;
+    }
+
     public String getDescription() {
         return description;
-    }
-
-    public double getLatitude() {
-        return latitude;
-    }
-
-    public double getLongitude() {
-        return longitude;
-    }
-
-    public int getReviewCount() {
-        return reviewCount;
     }
 
     public int getOverallRating() {
@@ -53,17 +57,20 @@ public class Hotel {
         return contact;
     }
 
+    public String getPrice() {
+        return price;
+    }
+
     @Override
     public String toString() {
         return "Hotel{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", photo='" + photo + '\'' +
                 ", description='" + description + '\'' +
-                ", latitude=" + latitude +
-                ", longitude=" + longitude +
-                ", reviewCount=" + reviewCount +
                 ", overallRating=" + overallRating +
                 ", contact='" + contact + '\'' +
+                ", price='" + price + '\'' +
                 '}';
     }
 }

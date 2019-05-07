@@ -1,11 +1,14 @@
 package com.eshna.travelapp.api;
 
+import com.eshna.travelapp.apiResponse.HotelsResponse;
+import com.eshna.travelapp.apiResponse.PackagesResponse;
 import com.eshna.travelapp.apiResponse.UserResponse;
 
 import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
@@ -40,5 +43,18 @@ public interface ApiInterface {
             @Body Map<String, String> updatedUserDetails
     );
 
+    //get list of hotels
+    @Headers({"Content-type: application/json", "Accept: application/json"})
+    @GET("api/hotel")
+    Call<HotelsResponse> getHotels(
+            @Header("Authorization") String apiToken
+    );
+
+    //get list of packages
+    @Headers({"Content-type: application/json", "Accept: application/json"})
+    @GET("api/package")
+    Call<PackagesResponse> getPackages(
+            @Header("Authorization") String apiToken
+    );
 
 }

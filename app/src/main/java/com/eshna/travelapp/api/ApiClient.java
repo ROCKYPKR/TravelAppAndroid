@@ -7,7 +7,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
-    private static final String BASE_URL = "https://gentle-atoll-61460.herokuapp.com/";
+    public static final String BASE_URL = "http://192.168.1.82"; //https://gentle-atoll-61460.herokuapp.com/
     private static Retrofit retrofit = null;
 
 

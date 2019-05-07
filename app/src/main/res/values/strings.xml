@@ -36,5 +36,12 @@
     <string name="gender">Please select your gender</string>
     <string name="country_hint">Country</string>
     <string name="gender_hint">Gender</string>
+    <string name="no_hotels_found">No Hotels Found</string>
+    <string name="no_packages_found">No Packages Found</string>
+    <string name="about">About</string>
+    <string name="reviews">Reviews</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

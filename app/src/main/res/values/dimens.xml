@@ -33,6 +33,7 @@
     <dimen name="text_size_xxxlarge">56sp</dimen>
 
     <!--Custom-->
-    <dimen name="hotel_thumb">100dp</dimen>
+    <dimen name="hotel_thumb">150dp</dimen>
     <dimen name="travel_package_thumb">150dp</dimen>
+    <dimen name="package_card_size">200dp</dimen>
 </resources>
