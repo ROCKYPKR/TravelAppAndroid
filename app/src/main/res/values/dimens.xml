@@ -36,4 +36,5 @@
     <dimen name="hotel_thumb">150dp</dimen>
     <dimen name="travel_package_thumb">150dp</dimen>
     <dimen name="package_card_size">200dp</dimen>
+    <dimen name="booking_card_height">100dp</dimen>
 </resources>

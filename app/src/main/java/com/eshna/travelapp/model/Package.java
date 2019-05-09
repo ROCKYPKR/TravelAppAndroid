@@ -21,10 +21,8 @@ public class Package implements Serializable {
     private String photo;
     @SerializedName("overall_rating")
     private int rating;
-    @SerializedName("reviews")
-    private PackageReview[] packageReviews;
 
-    public Package(int id, String name, String provider, String description, String price, String photo, int rating, PackageReview[] packageReviews) {
+    public Package(int id, String name, String provider, String description, String price, String photo, int rating) {
         this.id = id;
         this.name = name;
         this.provider = provider;
@@ -32,7 +30,6 @@ public class Package implements Serializable {
         this.price = price;
         this.photo = photo;
         this.rating = rating;
-        this.packageReviews = packageReviews;
     }
 
     public int getId() {
@@ -63,10 +60,6 @@ public class Package implements Serializable {
         return rating;
     }
 
-    public PackageReview[] getPackageReviews() {
-        return packageReviews;
-    }
-
     @Override
     public String toString() {
         return "Package{" +
@@ -77,7 +70,6 @@ public class Package implements Serializable {
                 ", price='" + price + '\'' +
                 ", photo='" + photo + '\'' +
                 ", rating=" + rating +
-                ", packageReviews=" + Arrays.toString(packageReviews) +
                 '}';
     }
 }

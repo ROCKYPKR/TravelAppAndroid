@@ -61,5 +61,10 @@
     <string name="book">Book</string>
     <string name="hint_write_review">Please write your review here</string>
     <string name="save">Save</string>
+    <string name="confirm_booking">Confirm Booking</string>
+    <string name="booked">Booked!!!</string>
+    <string name="booking_error">Could not book</string>
+    <string name="no_package_bookings">No Package Bookings!</string>
+    <string name="no_hotel_bookings">No Hotel Bookings!</string>
 
 </resources>

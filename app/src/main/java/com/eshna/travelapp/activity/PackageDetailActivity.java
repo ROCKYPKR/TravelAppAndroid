@@ -17,10 +17,8 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 
 import com.eshna.travelapp.R;
-import com.eshna.travelapp.fragment.AboutHotelFragment;
 import com.eshna.travelapp.fragment.AboutPackageFragment;
-import com.eshna.travelapp.fragment.HotelReviewFragment;
-import com.eshna.travelapp.fragment.PackageReviewFrament;
+import com.eshna.travelapp.fragment.PackageReviewFragment;
 import com.eshna.travelapp.model.Package;
 import com.squareup.picasso.Picasso;
 
@@ -42,7 +40,7 @@ public class PackageDetailActivity extends AppCompatActivity {
     ImageView packageIV;
     @BindView(R.id.tab_layout_package_detail)
     TabLayout tabLayout;
-    @BindView(R.id.view_page_package_detail)
+    @BindView(R.id.view_pager_package_detail)
     ViewPager viewPager;
 
     @BindString(R.string.about)
@@ -124,7 +122,7 @@ public class PackageDetailActivity extends AppCompatActivity {
                 fragment.setArguments(data);
             }
             if (i == 1){
-                fragment = new PackageReviewFrament();
+                fragment = new PackageReviewFragment();
 
                 Bundle data = new Bundle();//create bundle instance
                 data.putInt("package_id", aPackage.getId());

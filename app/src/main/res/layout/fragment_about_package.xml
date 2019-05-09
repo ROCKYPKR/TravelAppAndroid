@@ -36,16 +36,17 @@
             android:lineSpacingExtra="2dp"
             tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget justo sed leo dapibus aliquam non quis velit. Phasellus eu pulvinar sem. Donec ac consequat dolor. Maecenas tincidunt efficitur sem, vitae sodales urna fermentum et. Phasellus luctus lorem nec fringilla tincidunt. Vivamus a enim tortor. Donec sodales metus a metus semper, vel scelerisque lectus viverra. Ut eget nunc euismod, auctor leo vitae, congue turpis. Nam nisl mi, placerat eu feugiat at, commodo in erat. Ut tempus nisl ut volutpat dictum. In arcu enim, iaculis id orci vel, mollis volutpat metus. Suspendisse sollicitudin nunc non metus scelerisque, sed ultrices metus sagittis. Mauris dolor felis, posuere eget pharetra in, vestibulum a lacus. Nunc iaculis arcu sollicitudin, faucibus odio non, lacinia magna. Nullam quis venenatis sapien, ac convallis elit."/>
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab_book_package"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|bottom"
-            android:layout_margin="20dp"
-            app:borderWidth="2dp"
-            android:src="@drawable/ic_book_white_24dp"
-            app:rippleColor="#222"/>
-
     </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_book_package"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="20dp"
+        app:borderWidth="2dp"
+        android:src="@drawable/ic_book_white_24dp"
+        app:rippleColor="#222"
+        android:clickable="true"/>
 
 </FrameLayout>

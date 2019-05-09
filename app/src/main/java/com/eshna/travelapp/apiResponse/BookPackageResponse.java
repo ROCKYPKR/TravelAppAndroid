@@ -1,19 +1,19 @@
 package com.eshna.travelapp.apiResponse;
 
-import com.eshna.travelapp.model.HotelBooking;
+import com.eshna.travelapp.model.PackageBooking;
 import com.google.gson.annotations.SerializedName;
 
-public class BookHotelResponse {
+public class BookPackageResponse {
     @SerializedName("code")
     private String code;
     @SerializedName("data")
-    private HotelBooking hotelBooking;
+    private PackageBooking packageBooking;
     @SerializedName("error")
     private boolean error;
 
-    public BookHotelResponse(String code, HotelBooking hotelBooking, boolean error) {
+    public BookPackageResponse(String code, PackageBooking packageBooking, boolean error) {
         this.code = code;
-        this.hotelBooking = hotelBooking;
+        this.packageBooking = packageBooking;
         this.error = error;
     }
 
@@ -21,8 +21,8 @@ public class BookHotelResponse {
         return code;
     }
 
-    public HotelBooking getHotelBooking() {
-        return hotelBooking;
+    public PackageBooking getPackageBooking() {
+        return packageBooking;
     }
 
     public boolean isError() {
@@ -31,9 +31,9 @@ public class BookHotelResponse {
 
     @Override
     public String toString() {
-        return "BookHotelResponse{" +
+        return "BookPackageResponse{" +
                 "code='" + code + '\'' +
-                ", hotelBooking=" + hotelBooking +
+                ", packageBooking=" + packageBooking +
                 ", error='" + error + '\'' +
                 '}';
     }

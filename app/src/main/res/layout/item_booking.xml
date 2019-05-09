@@ -1,6 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/package_card_size"
+    android:layout_height="@dimen/package_card_size">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_booking_thumb"
+            android:layout_width="match_parent"
+            android:scaleType="centerCrop"
+            android:layout_height="@dimen/booking_card_height"
+            tools:src="@mipmap/hotel_placeholder" />
+
+
+        <TextView
+            android:id="@+id/tv_booking_name"
+            style="@style/primaryTextMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:padding="@dimen/margin_padding_size_small"
+            tools:text="Bungy Jump Package" />
+
+        <TextView
+            android:id="@+id/tv_booking_date"
+            style="@style/secondaryTextMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:padding="@dimen/margin_padding_size_small"
+            tools:text="Booked for: 2019/05/10" />
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

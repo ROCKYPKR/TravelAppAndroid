@@ -39,10 +39,10 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PackageReviewFrament extends Fragment {
+public class PackageReviewFragment extends Fragment {
 
 
-    private static final String TAG = PackageReviewFrament.class.getSimpleName();
+    private static final String TAG = PackageReviewFragment.class.getSimpleName();
 
     @BindView(R.id.rv_package_reviews)
     RecyclerView reviewRV;
@@ -61,7 +61,7 @@ public class PackageReviewFrament extends Fragment {
     private Unbinder unbinder;
 
 
-    public PackageReviewFrament() {
+    public PackageReviewFragment() {
         // Required empty public constructor
     }
 
@@ -84,7 +84,7 @@ public class PackageReviewFrament extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_package_review_frament, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_package_review, container, false);
         unbinder = ButterKnife.bind(this, rootView);
 
         showProgressbar();
