@@ -33,6 +33,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -54,6 +55,8 @@ public class HotelListFragment extends Fragment {
     @BindView(R.id.tv_no_hotels_found)
     TextView noHotelsFoundTV;
 
+    Unbinder unbinder;
+
     public HotelListFragment() {
         // Required empty public constructor
     }
@@ -67,7 +70,7 @@ public class HotelListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView =  inflater.inflate(R.layout.fragment_hotel_list, container, false);
-        ButterKnife.bind(this, rootView);
+        unbinder = ButterKnife.bind(this, rootView);
 
         showProgressBar();
 
@@ -76,6 +79,12 @@ public class HotelListFragment extends Fragment {
         getHotelsFromApi();
 
         return  rootView;
+    }
+
+    @Override
+    public void onDestroyView() {
+        unbinder.unbind();
+        super.onDestroyView();
     }
 
     private void initRecyclerView() {

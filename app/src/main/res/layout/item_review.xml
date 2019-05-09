@@ -40,9 +40,10 @@
             android:id="@+id/tv_review_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/secondaryTextSmall"
+            style="@style/secondaryTextMedium"
             tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget justo sed leo dapibus aliquam non quis velit. Phasellus eu pulvinar sem. Donec ac consequat dolor. Maecenas tincidunt efficitur sem, vitae sodales urna fermentum et. Phasellus luctus lorem nec fringilla tincidunt. Vivamus a enim tortor. Donec sodales metus a metus semper, vel scelerisque lectus viverra. Ut eget nunc euismod, auctor leo vitae, congue turpis. Nam nisl mi, placerat eu feugiat at, commodo in erat. Ut tempus nisl ut volutpat dictum. In arcu enim, iaculis id orci vel, mollis volutpat metus. Suspendisse sollicitudin nunc non metus scelerisque, sed ultrices metus sagittis. Mauris dolor felis, posuere eget pharetra in, vestibulum a lacus. Nunc iaculis arcu sollicitudin, faucibus odio non, lacinia magna. Nullam quis venenatis sapien, ac convallis elit."
-            android:lineSpacingExtra="2dp"/>
+            android:lineSpacingExtra="2dp"
+            android:padding="@dimen/margin_padding_size_small"/>
 
     </LinearLayout>
 

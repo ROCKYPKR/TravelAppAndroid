@@ -3,37 +3,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.AboutFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.AboutHotelFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="@dimen/margin_padding_size_small">
 
         <TextView
-            android:id="@+id/tv_hotel_detail_price"
+            android:id="@+id/tv_package_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="1200 per night"
+            tools:text="22000"
             style="@style/primaryTextMedium"/>
 
         <TextView
-            android:id="@+id/tv_hotel_detail_contact"
+            android:id="@+id/tv_package_provider"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:autoLink="phone"
+            android:maxLines="1"
             android:layout_marginTop="@dimen/margin_padding_size_small"
-            tools:text="+9779812121212"/>
+            tools:text="blue Fin Travels"/>
 
         <TextView
             android:layout_marginTop="@dimen/margin_padding_size_small"
-            android:id="@+id/tv_hotel_detail_desc"
+            android:id="@+id/tv_package_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/secondaryTextMedium"
             android:lineSpacingExtra="2dp"
             tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget justo sed leo dapibus aliquam non quis velit. Phasellus eu pulvinar sem. Donec ac consequat dolor. Maecenas tincidunt efficitur sem, vitae sodales urna fermentum et. Phasellus luctus lorem nec fringilla tincidunt. Vivamus a enim tortor. Donec sodales metus a metus semper, vel scelerisque lectus viverra. Ut eget nunc euismod, auctor leo vitae, congue turpis. Nam nisl mi, placerat eu feugiat at, commodo in erat. Ut tempus nisl ut volutpat dictum. In arcu enim, iaculis id orci vel, mollis volutpat metus. Suspendisse sollicitudin nunc non metus scelerisque, sed ultrices metus sagittis. Mauris dolor felis, posuere eget pharetra in, vestibulum a lacus. Nunc iaculis arcu sollicitudin, faucibus odio non, lacinia magna. Nullam quis venenatis sapien, ac convallis elit."/>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_book_package"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_margin="20dp"
+            app:borderWidth="2dp"
+            android:src="@drawable/ic_book_white_24dp"
+            app:rippleColor="#222"/>
 
     </LinearLayout>
 

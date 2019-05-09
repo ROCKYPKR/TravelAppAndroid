@@ -17,9 +17,10 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 
 import com.eshna.travelapp.R;
-import com.eshna.travelapp.fragment.AboutFragment;
-import com.eshna.travelapp.fragment.MapFragment;
-import com.eshna.travelapp.fragment.ReviewFragment;
+import com.eshna.travelapp.fragment.AboutHotelFragment;
+import com.eshna.travelapp.fragment.AboutPackageFragment;
+import com.eshna.travelapp.fragment.HotelReviewFragment;
+import com.eshna.travelapp.fragment.PackageReviewFrament;
 import com.eshna.travelapp.model.Package;
 import com.squareup.picasso.Picasso;
 
@@ -116,14 +117,14 @@ public class PackageDetailActivity extends AppCompatActivity {
         public Fragment getItem(int i) {
             Fragment fragment = null;
             if (i == 0){
-                fragment = new AboutFragment();
+                fragment = new AboutPackageFragment();
 
                 Bundle data = new Bundle();//create bundle instance
                 data.putSerializable("package", aPackage);//put object to pass with a key value
                 fragment.setArguments(data);
             }
             if (i == 1){
-                fragment = new ReviewFragment();
+                fragment = new PackageReviewFrament();
 
                 Bundle data = new Bundle();//create bundle instance
                 data.putInt("package_id", aPackage.getId());

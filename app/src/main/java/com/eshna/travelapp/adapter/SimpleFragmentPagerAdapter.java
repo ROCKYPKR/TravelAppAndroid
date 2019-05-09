@@ -4,9 +4,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.eshna.travelapp.fragment.AboutFragment;
+import com.eshna.travelapp.fragment.AboutHotelFragment;
 import com.eshna.travelapp.fragment.MapFragment;
-import com.eshna.travelapp.fragment.ReviewFragment;
+import com.eshna.travelapp.fragment.HotelReviewFragment;
 
 public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
 
@@ -24,9 +24,9 @@ public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
 
         switch (position) {
             case 0:
-                return new AboutFragment();
+                return new AboutHotelFragment();
             case 1:
-                return new ReviewFragment();
+                return new HotelReviewFragment();
             case 2:
                 return new MapFragment();
             default:

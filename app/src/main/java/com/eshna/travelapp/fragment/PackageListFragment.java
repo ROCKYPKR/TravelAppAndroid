@@ -32,6 +32,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -54,6 +55,8 @@ public class PackageListFragment extends Fragment {
     private List<Package> packageList;
     private PackageAdapter packageAdapter;
 
+    Unbinder unbinder;
+
 
 
     public PackageListFragment() {
@@ -66,7 +69,7 @@ public class PackageListFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_packaga_list, container, false);
-        ButterKnife.bind(this, rootView);
+        unbinder = ButterKnife.bind(this, rootView);
 
         showProgressBar();
 
@@ -75,6 +78,12 @@ public class PackageListFragment extends Fragment {
         getPackagesFromApi();
 
         return rootView;
+    }
+
+    @Override
+    public void onDestroyView() {
+        unbinder.unbind();
+        super.onDestroyView();
     }
 
     private void getPackagesFromApi() {

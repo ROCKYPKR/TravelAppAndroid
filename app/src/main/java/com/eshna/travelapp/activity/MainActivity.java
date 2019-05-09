@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.eshna.travelapp.R;
 import com.eshna.travelapp.fragment.HotelListFragment;
 import com.eshna.travelapp.fragment.HomeFragment;
+import com.eshna.travelapp.fragment.MyBookingsFragment;
 import com.eshna.travelapp.fragment.PackageListFragment;
 
 public class MainActivity extends AppCompatActivity
@@ -102,6 +103,9 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_book_a_hotel:
                 fragmentClass = HotelListFragment.class;
+                break;
+            case R.id.nav_my_bookings:
+                fragmentClass = MyBookingsFragment.class;
                 break;
             case R.id.nav_profile:
                 startActivity(new Intent(MainActivity.this, ProfileActivity.class));

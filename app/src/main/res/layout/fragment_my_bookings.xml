@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.MyBookingsFragment">
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical">
+
+       <TextView
+           style="@style/primaryTextLarge"
+           android:text="@string/hotel_bookings"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content" />
+
+       <android.support.v7.widget.RecyclerView
+           android:layout_marginTop="@dimen/margin_padding_size_small"
+           android:id="@+id/rv_hotel_bookings"
+           android:orientation="vertical"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+
+       </android.support.v7.widget.RecyclerView>
+
+       <TextView
+           android:layout_marginTop="@dimen/margin_padding_size_large"
+           style="@style/primaryTextLarge"
+           android:text="@string/package_bookings"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content" />
+
+       <android.support.v7.widget.RecyclerView
+           android:layout_marginTop="@dimen/margin_padding_size_small"
+           android:id="@+id/rv_package_bookings"
+           android:orientation="vertical"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+
+       </android.support.v7.widget.RecyclerView>
+
+   </LinearLayout>
+
+
+
+</FrameLayout>

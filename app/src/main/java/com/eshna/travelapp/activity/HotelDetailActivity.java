@@ -2,7 +2,6 @@ package com.eshna.travelapp.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.TabLayout;
@@ -15,14 +14,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
 
 import com.eshna.travelapp.R;
-import com.eshna.travelapp.adapter.SimpleFragmentPagerAdapter;
-import com.eshna.travelapp.fragment.AboutFragment;
+import com.eshna.travelapp.fragment.AboutHotelFragment;
+import com.eshna.travelapp.fragment.HotelReviewFragment;
 import com.eshna.travelapp.fragment.MapFragment;
-import com.eshna.travelapp.fragment.ReviewFragment;
 import com.eshna.travelapp.model.Hotel;
 import com.squareup.picasso.Picasso;
 
@@ -117,14 +114,14 @@ public class HotelDetailActivity extends AppCompatActivity {
         public Fragment getItem(int i) {
             Fragment fragment = null;
             if (i == 0){
-                fragment = new AboutFragment();
+                fragment = new AboutHotelFragment();
 
                 Bundle data = new Bundle();//create bundle instance
                 data.putSerializable("hotel", mHotel);//put object to pass with a key value
                 fragment.setArguments(data);
             }
             if (i == 1){
-                fragment = new ReviewFragment();
+                fragment = new HotelReviewFragment();
 
                 Bundle data = new Bundle();//create bundle instance
                 data.putInt("hotel_id", hotel.getId());

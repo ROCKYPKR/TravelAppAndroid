@@ -1,8 +1,10 @@
 package com.eshna.travelapp.api;
 
+import com.eshna.travelapp.apiResponse.BookHotelResponse;
+import com.eshna.travelapp.apiResponse.HotelReviewResponse;
 import com.eshna.travelapp.apiResponse.HotelsResponse;
+import com.eshna.travelapp.apiResponse.PackageReviewResponse;
 import com.eshna.travelapp.apiResponse.PackagesResponse;
-import com.eshna.travelapp.apiResponse.ReviewResponse;
 import com.eshna.travelapp.apiResponse.UserResponse;
 
 import java.util.Map;
@@ -73,7 +75,7 @@ public interface ApiInterface {
     //get reviews for the current hotel
     @Headers({"Content-type: application/json", "Accept: application/json"})
     @GET("api/hotel/{hotel_id}/review")
-    Call<ReviewResponse> getReviewsForAHotel(
+    Call<HotelReviewResponse> getReviewsForAHotel(
             @Path("hotel_id") int hotelId,
             @Header("Authorization") String apiToken
     );
@@ -81,8 +83,15 @@ public interface ApiInterface {
     //get reviews for the current package
     @Headers({"Content-type: application/json", "Accept: application/json"})
     @GET("api/package/{package_id}/review")
-    Call<ReviewResponse> getReviewsForAPackage(
+    Call<PackageReviewResponse> getReviewsForAPackage(
             @Path("package_id") int packageId,
+            @Header("Authorization") String apiToken
+    );
+
+    //book a hotel
+    @Headers({"Content-type: application/json", "Accept: application/json"})
+    @POST("api/hotelbooking")
+    Call<BookHotelResponse> bookHotel(
             @Header("Authorization") String apiToken
     );
 
