@@ -20,7 +20,7 @@ import com.eshna.travelapp.R;
 import com.eshna.travelapp.adapter.PackageReviewAdapter;
 import com.eshna.travelapp.api.ApiClient;
 import com.eshna.travelapp.api.ApiInterface;
-import com.eshna.travelapp.apiResponse.PackageReviewResponse;
+import com.eshna.travelapp.apiResponse.PackageReviewsResponse;
 import com.eshna.travelapp.model.PackageReview;
 import com.eshna.travelapp.utility.ItemOffsetDecoration;
 import com.eshna.travelapp.utility.UserLocalStore;
@@ -107,11 +107,11 @@ public class PackageReviewFragment extends Fragment {
 
         UserLocalStore userLocalStore = new UserLocalStore(getContext());
 
-        Call<PackageReviewResponse> call = apiInterface.getReviewsForAPackage(currentPackageId, userLocalStore.getLoggedInUser().getApiToken());
+        Call<PackageReviewsResponse> call = apiInterface.getReviewsForAPackage(currentPackageId, userLocalStore.getLoggedInUser().getApiToken());
 
-        call.enqueue(new Callback<PackageReviewResponse>() {
+        call.enqueue(new Callback<PackageReviewsResponse>() {
             @Override
-            public void onResponse(@NonNull Call<PackageReviewResponse> call, @NonNull Response<PackageReviewResponse> response) {
+            public void onResponse(@NonNull Call<PackageReviewsResponse> call, @NonNull Response<PackageReviewsResponse> response) {
                 if (response.isSuccessful()) {
                     Log.d(TAG, String.valueOf(response.code()));
                     Log.d(TAG, response.toString());
@@ -131,7 +131,7 @@ public class PackageReviewFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(@NonNull Call<PackageReviewResponse> call, @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<PackageReviewsResponse> call, @NonNull Throwable t) {
                 Log.e(TAG, " in onFailure() ");
                 Log.d(TAG, t.getLocalizedMessage());
                 t.printStackTrace();

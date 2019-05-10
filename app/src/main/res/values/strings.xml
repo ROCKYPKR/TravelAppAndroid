@@ -66,5 +66,6 @@
     <string name="booking_error">Could not book</string>
     <string name="no_package_bookings">No Package Bookings!</string>
     <string name="no_hotel_bookings">No Hotel Bookings!</string>
+    <string name="done">Done</string>
 
 </resources>

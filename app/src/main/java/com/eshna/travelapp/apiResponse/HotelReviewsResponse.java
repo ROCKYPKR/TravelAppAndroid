@@ -3,17 +3,19 @@ package com.eshna.travelapp.apiResponse;
 import com.eshna.travelapp.model.HotelReview;
 import com.google.gson.annotations.SerializedName;
 
-public class HotelReviewResponse {
+import java.util.Arrays;
+
+public class HotelReviewsResponse {
     @SerializedName("code")
     private String code;
     @SerializedName("data")
-    private HotelReview review;
+    private HotelReview[] reviews;
     @SerializedName("error")
-    private boolean error;
+    private String error;
 
-    public HotelReviewResponse(String code, HotelReview review, boolean error) {
+    public HotelReviewsResponse(String code, HotelReview[] reviews, String error) {
         this.code = code;
-        this.review = review;
+        this.reviews = reviews;
         this.error = error;
     }
 
@@ -21,19 +23,19 @@ public class HotelReviewResponse {
         return code;
     }
 
-    public HotelReview getReview() {
-        return review;
+    public HotelReview[] getReviews() {
+        return reviews;
     }
 
-    public boolean getError() {
+    public String getError() {
         return error;
     }
 
     @Override
     public String toString() {
-        return "HotelReviewResponse{" +
+        return "HotelReviewsResponse{" +
                 "code='" + code + '\'' +
-                ", review=" + review +
+                ", reviews=" + Arrays.toString(reviews) +
                 ", error='" + error + '\'' +
                 '}';
     }

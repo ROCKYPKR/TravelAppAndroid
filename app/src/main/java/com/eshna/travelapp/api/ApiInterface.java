@@ -4,9 +4,11 @@ import com.eshna.travelapp.apiResponse.BookHotelResponse;
 import com.eshna.travelapp.apiResponse.BookPackageResponse;
 import com.eshna.travelapp.apiResponse.HotelBookingsResponse;
 import com.eshna.travelapp.apiResponse.HotelReviewResponse;
+import com.eshna.travelapp.apiResponse.HotelReviewsResponse;
 import com.eshna.travelapp.apiResponse.HotelsResponse;
 import com.eshna.travelapp.apiResponse.PackageBookingsResponse;
 import com.eshna.travelapp.apiResponse.PackageReviewResponse;
+import com.eshna.travelapp.apiResponse.PackageReviewsResponse;
 import com.eshna.travelapp.apiResponse.PackagesResponse;
 import com.eshna.travelapp.apiResponse.UserResponse;
 
@@ -78,7 +80,7 @@ public interface ApiInterface {
     //get reviews for the current hotel
     @Headers({"Content-type: application/json", "Accept: application/json"})
     @GET("api/hotel/{hotel_id}/review")
-    Call<HotelReviewResponse> getReviewsForAHotel(
+    Call<HotelReviewsResponse> getReviewsForAHotel(
             @Path("hotel_id") int hotelId,
             @Header("Authorization") String apiToken
     );
@@ -86,7 +88,7 @@ public interface ApiInterface {
     //get reviews for the current package
     @Headers({"Content-type: application/json", "Accept: application/json"})
     @GET("api/package/{package_id}/review")
-    Call<PackageReviewResponse> getReviewsForAPackage(
+    Call<PackageReviewsResponse> getReviewsForAPackage(
             @Path("package_id") int packageId,
             @Header("Authorization") String apiToken
     );
@@ -120,5 +122,23 @@ public interface ApiInterface {
     Call<PackageBookingsResponse> getPackageBookings(
             @Header("Authorization") String apiToken
     );
+
+    //post a review for hotel
+    @Headers({"Content-type: application/json", "Accept: application/json"})
+    @POST("api/hotel/review")
+    Call<HotelReviewResponse> postHotelReview(
+            @Header("Authorization") String apiToken,
+            @Body Map<String, String> hotelReviewData
+    );
+
+    //post a review for package
+    @Headers({"Content-type: application/json", "Accept: application/json"})
+    @POST("api/hotel/review")
+    Call<PackageReviewResponse> postPackageReview(
+            @Header("Authorization") String apiToken,
+            @Body Map<String, String> hotelReviewData
+    );
+
+    //another method for post place review
 
 }

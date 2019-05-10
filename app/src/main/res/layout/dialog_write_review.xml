@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_margin="@dimen/margin_padding_size_small"
+    android:id="@+id/root">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Review"
+        android:gravity="center"
+        style="@style/primaryTextLarge"
+        android:padding="@dimen/margin_padding_size_medium"/>
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rb_write_review"
+        android:layout_gravity="center"/>
+
+    <EditText
+        android:id="@+id/et_write_review"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:padding="@dimen/margin_padding_size_medium"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_padding_size_medium">
+
+        <TextView
+            android:padding="@dimen/margin_padding_size_medium"
+            android:textSize="@dimen/text_size_large"
+            android:textAllCaps="true"
+            android:textColor="@color/colorAccent"
+            android:id="@+id/tv_done_write_review"
+            android:text="@string/done"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+
+        <TextView
+            android:padding="@dimen/margin_padding_size_medium"
+            android:id="@+id/tv_cancel_write_review"
+            android:textSize="@dimen/text_size_large"
+            android:textAllCaps="true"
+            android:textColor="@color/colorAccent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
