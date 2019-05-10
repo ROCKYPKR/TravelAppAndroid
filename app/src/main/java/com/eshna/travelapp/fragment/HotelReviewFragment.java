@@ -185,7 +185,7 @@ public class HotelReviewFragment extends Fragment{
             }
 
             @Override
-            public void onFailure(Call<HotelReviewResponse> call, Throwable t) {
+            public void onFailure(@NonNull Call<HotelReviewResponse> call,@NonNull Throwable t) {
                 Log.e(TAG, " in onFailure() ");
                 Log.d(TAG, t.getLocalizedMessage());
                 t.printStackTrace();

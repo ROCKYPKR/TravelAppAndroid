@@ -133,7 +133,7 @@ public interface ApiInterface {
 
     //post a review for package
     @Headers({"Content-type: application/json", "Accept: application/json"})
-    @POST("api/hotel/review")
+    @POST("api/package/review")
     Call<PackageReviewResponse> postPackageReview(
             @Header("Authorization") String apiToken,
             @Body Map<String, String> hotelReviewData
