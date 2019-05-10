@@ -1,6 +1,7 @@
 package com.eshna.travelapp.model;
 
 import com.eshna.travelapp.api.ApiClient;
+import com.google.android.gms.common.api.Api;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
@@ -23,9 +24,12 @@ public class Hotel implements Serializable {
     private String contact;
     @SerializedName("price")
     private String price;
+    @SerializedName("latitude")
+    private double latitude;
+    @SerializedName("longitude")
+    private double longitude;
 
-
-    public Hotel(int id, String name, String photo, String description, String overallRating, String contact, String price) {
+    public Hotel(int id, String name, String photo, String description, String overallRating, String contact, String price, double latitude, double longitude) {
         this.id = id;
         this.name = name;
         this.photo = photo;
@@ -33,6 +37,8 @@ public class Hotel implements Serializable {
         this.overallRating = overallRating;
         this.contact = contact;
         this.price = price;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     public int getId() {
@@ -63,6 +69,14 @@ public class Hotel implements Serializable {
         return price;
     }
 
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
     @Override
     public String toString() {
         return "Hotel{" +
@@ -70,9 +84,11 @@ public class Hotel implements Serializable {
                 ", name='" + name + '\'' +
                 ", photo='" + photo + '\'' +
                 ", description='" + description + '\'' +
-                ", overallRating=" + overallRating +
+                ", overallRating='" + overallRating + '\'' +
                 ", contact='" + contact + '\'' +
                 ", price='" + price + '\'' +
+                ", latitude='" + latitude + '\'' +
+                ", longitude='" + longitude + '\'' +
                 '}';
     }
 }

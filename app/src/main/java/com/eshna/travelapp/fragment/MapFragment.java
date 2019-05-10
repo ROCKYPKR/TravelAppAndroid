@@ -57,16 +57,16 @@ public class MapFragment extends Fragment {
                 mMap.clear(); //clear old markers
 
                 CameraPosition googlePlex = CameraPosition.builder()
-                        .target(new LatLng(37.4219999,-122.0862462))
+                        .target(new LatLng(mHotel.getLatitude(),mHotel.getLongitude()))
                         .zoom(10)
                         .bearing(0)
                         .tilt(45)
                         .build();
 
-                mMap.animateCamera(CameraUpdateFactory.newCameraPosition(googlePlex), 10000, null);
+                mMap.animateCamera(CameraUpdateFactory.newCameraPosition(googlePlex), 1000, null);
 
                 mMap.addMarker(new MarkerOptions()
-                        .position(new LatLng(37.4629101,-122.2449094))
+                        .position(new LatLng(mHotel.getLatitude(),mHotel.getLongitude()))
                         .title(mHotel.getName())
                         .snippet(mHotel.getDescription().substring(0,25)));
             }
