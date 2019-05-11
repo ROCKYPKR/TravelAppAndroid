@@ -10,8 +10,11 @@ import com.eshna.travelapp.apiResponse.PackageBookingsResponse;
 import com.eshna.travelapp.apiResponse.PackageReviewResponse;
 import com.eshna.travelapp.apiResponse.PackageReviewsResponse;
 import com.eshna.travelapp.apiResponse.PackagesResponse;
+import com.eshna.travelapp.apiResponse.PlacesResponse;
 import com.eshna.travelapp.apiResponse.UserResponse;
+import com.eshna.travelapp.model.Place;
 
+import java.util.List;
 import java.util.Map;
 
 import retrofit2.Call;
@@ -74,6 +77,13 @@ public interface ApiInterface {
     @Headers({"Content-type: application/json", "Accept: application/json"})
     @GET("api/package")
     Call<PackagesResponse> getPackages(
+            @Header("Authorization") String apiToken
+    );
+
+    //get list of places
+    @Headers({"Content-type: application/json", "Accept: application/json"})
+    @GET("api/place")
+    Call<PlacesResponse> getPlaces(
             @Header("Authorization") String apiToken
     );
 
