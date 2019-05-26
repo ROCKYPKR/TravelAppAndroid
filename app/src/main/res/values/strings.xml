@@ -69,5 +69,7 @@
     <string name="done">Done</string>
     <string name="confirm_exit_message">Are you sure you want to exit the App?</string>
     <string name="confirm_exit_title">Confirm Exit?</string>
+    <string name="confirm_delete_review">Are you sure you want to delete this review?</string>
+    <string name="delete">Delete</string>
 
 </resources>

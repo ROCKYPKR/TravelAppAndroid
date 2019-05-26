@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:srcCompat="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -31,6 +32,7 @@
         </LinearLayout>
 
         <RatingBar
+            android:layout_margin="@dimen/margin_padding_size_small"
             android:id="@+id/rb_review_rating"
             android:isIndicator="true"
             android:layout_width="wrap_content"
@@ -44,6 +46,34 @@
             tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget justo sed leo dapibus aliquam non quis velit. Phasellus eu pulvinar sem. Donec ac consequat dolor. Maecenas tincidunt efficitur sem, vitae sodales urna fermentum et. Phasellus luctus lorem nec fringilla tincidunt. Vivamus a enim tortor. Donec sodales metus a metus semper, vel scelerisque lectus viverra. Ut eget nunc euismod, auctor leo vitae, congue turpis. Nam nisl mi, placerat eu feugiat at, commodo in erat. Ut tempus nisl ut volutpat dictum. In arcu enim, iaculis id orci vel, mollis volutpat metus. Suspendisse sollicitudin nunc non metus scelerisque, sed ultrices metus sagittis. Mauris dolor felis, posuere eget pharetra in, vestibulum a lacus. Nunc iaculis arcu sollicitudin, faucibus odio non, lacinia magna. Nullam quis venenatis sapien, ac convallis elit."
             android:lineSpacingExtra="2dp"
             android:padding="@dimen/margin_padding_size_small"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/pane_edit_delete_review"
+            android:visibility="gone">
+
+            <ImageView
+                android:padding="@dimen/margin_padding_size_small"
+                android:id="@+id/iv_edit_review"
+                android:layout_width="@dimen/standard_touch_size"
+                android:layout_height="@dimen/standard_touch_size"
+                android:src="@drawable/ic_edit_icon_color_24dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:contentDescription="Edit Review"/>
+
+            <ImageView
+                android:padding="@dimen/margin_padding_size_small"
+                android:id="@+id/iv_delete_review"
+                android:layout_width="@dimen/standard_touch_size"
+                android:layout_height="@dimen/standard_touch_size"
+                android:src="@drawable/ic_delete_icon_color_24dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:contentDescription="Delete Review"/>
+
+        </RelativeLayout>
 
     </LinearLayout>
 

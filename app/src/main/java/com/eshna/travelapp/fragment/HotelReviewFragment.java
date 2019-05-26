@@ -13,7 +13,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RatingBar;
@@ -26,9 +25,15 @@ import com.eshna.travelapp.api.ApiClient;
 import com.eshna.travelapp.api.ApiInterface;
 import com.eshna.travelapp.apiResponse.HotelReviewResponse;
 import com.eshna.travelapp.apiResponse.HotelReviewsResponse;
+import com.eshna.travelapp.event.HotelReviewDeletedEvent;
+import com.eshna.travelapp.event.HotelReviewUpdatedEvent;
 import com.eshna.travelapp.model.HotelReview;
 import com.eshna.travelapp.utility.ItemOffsetDecoration;
 import com.eshna.travelapp.utility.UserLocalStore;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -66,6 +71,12 @@ public class HotelReviewFragment extends Fragment{
 
     public HotelReviewFragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -123,7 +134,6 @@ public class HotelReviewFragment extends Fragment{
 
         tvDone.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //TODO: HIT post review api
                 if (userInput.getText().toString().isEmpty()){
                     Toast.makeText(getContext(), "Please provide review", Toast.LENGTH_SHORT).show();
                 } else {
@@ -168,7 +178,7 @@ public class HotelReviewFragment extends Fragment{
                     Log.d(TAG, response.toString());
                     Log.d(TAG, "onResponse: "+response.body().toString());
                     if (response.body() != null) {
-                        if (!response.body().getError()){
+                        if (!response.body().isError()){
                             reviewList.add( response.body().getReview());
                             adapter.notifyDataSetChanged();
                             noReviewsTV.setVisibility(View.GONE);
@@ -253,5 +263,26 @@ public class HotelReviewFragment extends Fragment{
     }
     private void hideProgressBar(){
         progressBar.setVisibility(View.GONE);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onReviewUpdated(HotelReviewUpdatedEvent hotelReviewUpdatedEvent){
+        //fired when an event is posted
+        reviewList.set(hotelReviewUpdatedEvent.getReviewPosition(), hotelReviewUpdatedEvent.getHotelReview());
+        adapter.notifyDataSetChanged();
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onReviewDeleted(HotelReviewDeletedEvent hotelReviewDeletedEvent){
+        //fired when an event is posted
+
+        reviewList.remove(hotelReviewDeletedEvent.getReviewPosition());
+        adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onStop() {
+        EventBus.getDefault().unregister(this);
+        super.onStop();
     }
 }

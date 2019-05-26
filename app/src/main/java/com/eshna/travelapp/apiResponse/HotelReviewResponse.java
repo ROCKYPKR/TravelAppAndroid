@@ -10,11 +10,14 @@ public class HotelReviewResponse {
     private HotelReview review;
     @SerializedName("error")
     private boolean error;
+    @SerializedName("message")
+    private String message;
 
-    public HotelReviewResponse(String code, HotelReview review, boolean error) {
+    public HotelReviewResponse(String code, HotelReview review, boolean error, String message) {
         this.code = code;
         this.review = review;
         this.error = error;
+        this.message = message;
     }
 
     public String getCode() {
@@ -25,8 +28,12 @@ public class HotelReviewResponse {
         return review;
     }
 
-    public boolean getError() {
+    public boolean isError() {
         return error;
+    }
+
+    public String getMessage() {
+        return message;
     }
 
     @Override
@@ -34,7 +41,8 @@ public class HotelReviewResponse {
         return "HotelReviewResponse{" +
                 "code='" + code + '\'' +
                 ", review=" + review +
-                ", error='" + error + '\'' +
+                ", error=" + error +
+                ", message='" + message + '\'' +
                 '}';
     }
 }

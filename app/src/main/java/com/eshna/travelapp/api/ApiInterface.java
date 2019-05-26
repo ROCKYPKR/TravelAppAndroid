@@ -6,6 +6,7 @@ import com.eshna.travelapp.apiResponse.HotelBookingsResponse;
 import com.eshna.travelapp.apiResponse.HotelReviewResponse;
 import com.eshna.travelapp.apiResponse.HotelReviewsResponse;
 import com.eshna.travelapp.apiResponse.HotelsResponse;
+import com.eshna.travelapp.apiResponse.MinimalResponse;
 import com.eshna.travelapp.apiResponse.PackageBookingsResponse;
 import com.eshna.travelapp.apiResponse.PackageReviewResponse;
 import com.eshna.travelapp.apiResponse.PackageReviewsResponse;
@@ -19,6 +20,7 @@ import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
@@ -150,5 +152,30 @@ public interface ApiInterface {
     );
 
     //another method for post place review
+
+
+    //update hotel review
+    @Headers({"Content-type: application/json", "Accept: application/json"})
+    @PUT("api/hotel/review/{review_id}")
+    Call<HotelReviewResponse> updateHotelReview(
+            @Path("review_id") int reviewId,
+            @Header("Authorization") String apiToken,
+            @Body Map<String, String> hotelReviewData
+    );
+
+    //delete hotel review
+    @Headers({"Content-type: application/json", "Accept: application/json"})
+    @DELETE("api/hotel/review/{review_id}")
+    Call<MinimalResponse> deleteHotelReview(
+            @Path("review_id") int reviewId,
+            @Header("Authorization") String apiToken
+    );
+
+
+    //update package review
+
+
+    //delete package review
+
 
 }
