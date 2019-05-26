@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.EventLog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,9 +26,17 @@ import com.eshna.travelapp.api.ApiClient;
 import com.eshna.travelapp.api.ApiInterface;
 import com.eshna.travelapp.apiResponse.PackageReviewResponse;
 import com.eshna.travelapp.apiResponse.PackageReviewsResponse;
+import com.eshna.travelapp.event.HotelReviewDeletedEvent;
+import com.eshna.travelapp.event.HotelReviewUpdatedEvent;
+import com.eshna.travelapp.event.PackageReviewDeletedEvent;
+import com.eshna.travelapp.event.PackageReviewUpdatedEvent;
 import com.eshna.travelapp.model.PackageReview;
 import com.eshna.travelapp.utility.ItemOffsetDecoration;
 import com.eshna.travelapp.utility.UserLocalStore;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -71,6 +80,12 @@ public class PackageReviewFragment extends Fragment {
 
     public PackageReviewFragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -254,5 +269,26 @@ public class PackageReviewFragment extends Fragment {
     }
     private void hideProgressBar(){
         progressBar.setVisibility(View.GONE);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onReviewUpdated(PackageReviewUpdatedEvent packageReviewUpdatedEvent){
+        //fired when an event is posted
+        reviewList.set(packageReviewUpdatedEvent.getReviewPosition(), packageReviewUpdatedEvent.getmPackageReview());
+        adapter.notifyDataSetChanged();
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onReviewDeleted(PackageReviewDeletedEvent packageReviewDeletedEvent){
+        //fired when an event is posted
+
+        reviewList.remove(packageReviewDeletedEvent.getReviewPosition());
+        adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onStop() {
+        EventBus.getDefault().unregister(this);
+        super.onStop();
     }
 }

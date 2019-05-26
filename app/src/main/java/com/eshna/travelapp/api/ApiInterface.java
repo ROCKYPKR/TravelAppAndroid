@@ -173,9 +173,20 @@ public interface ApiInterface {
 
 
     //update package review
-
+    @Headers({"Content-type: application/json", "Accept: application/json"})
+    @PUT("api/package/review/{review_id}")
+    Call<PackageReviewResponse> updatePackageReview(
+            @Path("review_id") int reviewId,
+            @Header("Authorization") String apiToken,
+            @Body Map<String, String> hotelReviewData
+    );
 
     //delete package review
-
+    @Headers({"Content-type: application/json", "Accept: application/json"})
+    @DELETE("api/package/review/{review_id}")
+    Call<MinimalResponse> deletePackageReview(
+            @Path("review_id") int reviewId,
+            @Header("Authorization") String apiToken
+    );
 
 }
