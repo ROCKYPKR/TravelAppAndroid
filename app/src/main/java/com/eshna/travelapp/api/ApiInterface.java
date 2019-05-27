@@ -197,4 +197,12 @@ public interface ApiInterface {
             @Header("Authorization") String apiToken
     );
 
+    //delete package booking (cancel package booking)
+    @Headers({"Content-type: application/json", "Accept: application/json"})
+    @DELETE("api/packagebooking/{booking_id}")
+    Call<MinimalResponse> deletePackageBooking(
+            @Path("booking_id") int bookingId,
+            @Header("Authorization") String apiToken
+    );
+
 }

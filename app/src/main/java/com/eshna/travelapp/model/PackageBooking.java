@@ -4,13 +4,13 @@ import com.google.gson.annotations.SerializedName;
 
 public class PackageBooking {
     @SerializedName("user_id")
-    private String userId;
+    private int userId;
     @SerializedName("tour_package_id")
-    private String packageId;
+    private int packageId;
     @SerializedName("created_at")
     private String created_at;
     @SerializedName("id")
-    private String bookingId;
+    private int bookingId;
     @SerializedName("booked_for")
     private String bookedDate;
     @SerializedName("package")
@@ -20,7 +20,7 @@ public class PackageBooking {
     @SerializedName("status")
     private String status;
 
-    public PackageBooking(String userId, String packageId, String created_at, String bookingId, String bookedDate, Package aPackage, User user, String status) {
+    public PackageBooking(int userId, int packageId, String created_at, int bookingId, String bookedDate, Package aPackage, User user, String status) {
         this.userId = userId;
         this.packageId = packageId;
         this.created_at = created_at;
@@ -31,11 +31,11 @@ public class PackageBooking {
         this.status = status;
     }
 
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public String getPackageId() {
+    public int getPackageId() {
         return packageId;
     }
 
@@ -43,7 +43,7 @@ public class PackageBooking {
         return created_at;
     }
 
-    public String getBookingId() {
+    public int getBookingId() {
         return bookingId;
     }
 

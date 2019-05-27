@@ -23,6 +23,7 @@ import com.eshna.travelapp.api.ApiInterface;
 import com.eshna.travelapp.apiResponse.HotelBookingsResponse;
 import com.eshna.travelapp.apiResponse.PackageBookingsResponse;
 import com.eshna.travelapp.event.HotelBookingDeletedEvent;
+import com.eshna.travelapp.event.PackageBookingDeletedEvent;
 import com.eshna.travelapp.model.HotelBooking;
 import com.eshna.travelapp.model.PackageBooking;
 import com.eshna.travelapp.utility.ItemOffsetDecoration;
@@ -263,6 +264,15 @@ public class MyBookingsFragment extends Fragment {
         hotelBookingList.remove(hotelBookingDeletedEvent.getPosition());
         hotelBookingAdapter.notifyDataSetChanged();
     }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onPackageBookingDeletedEvent(PackageBookingDeletedEvent packageBookingDeletedEvent){
+        //fired when an event is posted
+
+        packageBookingList.remove(packageBookingDeletedEvent.getPosition());
+        packageBookingAdapter.notifyDataSetChanged();
+    }
+
 
     @Override
     public void onStop() {
