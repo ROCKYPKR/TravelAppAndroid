@@ -105,7 +105,7 @@ public class AboutHotelFragment extends Fragment {
                         DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
-                                String dateSelected = String.valueOf(year)+"/"+String.valueOf(monthOfYear)+"/"+String.valueOf(dayOfMonth);
+                                String dateSelected = String.valueOf(year)+"/"+String.valueOf(monthOfYear+1)+"/"+String.valueOf(dayOfMonth);
                                 hitBookHotelApi(dateSelected);
                             }
                         }, 2012, 10, 10); //for initializing DPD only
