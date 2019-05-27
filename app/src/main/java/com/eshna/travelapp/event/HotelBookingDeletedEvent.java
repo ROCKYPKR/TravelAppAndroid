@@ -7,7 +7,7 @@ public class HotelBookingDeletedEvent {
         mPosition = position;
     }
 
-    public int getHotelBookignPosition(){
+    public int getPosition(){
         return mPosition;
     }
 }

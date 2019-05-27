@@ -260,7 +260,7 @@ public class MyBookingsFragment extends Fragment {
     public void onHotelBookingDeletedEvent(HotelBookingDeletedEvent hotelBookingDeletedEvent){
         //fired when an event is posted
 
-        hotelBookingList.remove(hotelBookingDeletedEvent.getHotelBookignPosition());
+        hotelBookingList.remove(hotelBookingDeletedEvent.getPosition());
         hotelBookingAdapter.notifyDataSetChanged();
     }
 
