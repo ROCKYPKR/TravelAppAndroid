@@ -136,7 +136,7 @@ public class HomeFragment extends Fragment{
                 mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
                     @Override
                     public boolean onMarkerClick(Marker marker) {
-                        //TODO: Show bottom sheet peek, also set bottom sheet values
+                        //display selected place's information on a bottom sheet
                         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HALF_EXPANDED);
 
                         Place selectedPlace = (Place) marker.getTag();

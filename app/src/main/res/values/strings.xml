@@ -71,5 +71,7 @@
     <string name="confirm_exit_title">Confirm Exit?</string>
     <string name="confirm_delete_review">Are you sure you want to delete this review?</string>
     <string name="delete">Delete</string>
+    <string name="confirm_cancel_booking_message">Are you sure you want to cancel this booking?</string>
+    <string name="confirm_cancel_booking">Confirm Cancel Booking</string>
 
 </resources>

@@ -22,11 +22,16 @@ import com.eshna.travelapp.api.ApiClient;
 import com.eshna.travelapp.api.ApiInterface;
 import com.eshna.travelapp.apiResponse.HotelBookingsResponse;
 import com.eshna.travelapp.apiResponse.PackageBookingsResponse;
+import com.eshna.travelapp.event.HotelBookingDeletedEvent;
 import com.eshna.travelapp.model.HotelBooking;
 import com.eshna.travelapp.model.PackageBooking;
 import com.eshna.travelapp.utility.ItemOffsetDecoration;
 import com.eshna.travelapp.utility.RecyclerViewClickListener;
 import com.eshna.travelapp.utility.UserLocalStore;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -76,6 +81,12 @@ public class MyBookingsFragment extends Fragment {
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -122,7 +133,7 @@ public class MyBookingsFragment extends Fragment {
             @Override
             public void onClick(View view, int position) {
                 Log.d(TAG, "onClick: "+position);
-                Toast.makeText(getContext(), "Some future function", Toast.LENGTH_SHORT).show();
+                //TODO: Some future feature
             }
         };
         hotelBookingAdapter = new HotelBookingAdapter(hotelBookingList, getActivity(), recyclerViewClickListener);
@@ -145,7 +156,7 @@ public class MyBookingsFragment extends Fragment {
             @Override
             public void onClick(View view, int position) {
                 Log.d(TAG, "onClick: "+position);
-                Toast.makeText(getContext(), "Some future function", Toast.LENGTH_SHORT).show();
+                //TODO: SOme future feature
             }
         };
         packageBookingAdapter = new PackageBookingAdapter(packageBookingList, getActivity(), recyclerViewClickListener2);
@@ -243,5 +254,19 @@ public class MyBookingsFragment extends Fragment {
 
     private void hideProgressBar(){
         progressBar.setVisibility(View.GONE);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onHotelBookingDeletedEvent(HotelBookingDeletedEvent hotelBookingDeletedEvent){
+        //fired when an event is posted
+
+        hotelBookingList.remove(hotelBookingDeletedEvent.getHotelBookignPosition());
+        hotelBookingAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onStop() {
+        EventBus.getDefault().unregister(this);
+        super.onStop();
     }
 }

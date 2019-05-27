@@ -1,6 +1,7 @@
 package com.eshna.travelapp.adapter;
 
 import android.content.Context;
+import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.eshna.travelapp.R;
 import com.eshna.travelapp.model.PackageBooking;
@@ -21,7 +23,7 @@ import butterknife.ButterKnife;
 
 public class PackageBookingAdapter extends RecyclerView.Adapter<PackageBookingAdapter.PackageBookingVH> {
 
-    private static final String LOG_TAG = HotelAdapter.class.getSimpleName();
+    private static final String TAG = HotelAdapter.class.getSimpleName();
 
     private Context mContext;
     private List<PackageBooking> packageBookings;
@@ -51,7 +53,15 @@ public class PackageBookingAdapter extends RecyclerView.Adapter<PackageBookingAd
             Picasso.with(mContext).load(packageBooking.getaPackage().getPhoto()).into(packageBookingVH.bookingThumbIV);
         }
         packageBookingVH.bookingNameTV.setText(packageBooking.getaPackage().getName());
-        packageBookingVH.bookingDateTV.setText(packageBooking.getBookedDate());
+        packageBookingVH.bookingDateTV.setText(String.format("Booked for: %s", packageBooking.getBookedDate()));
+
+        packageBookingVH.cancelBookingIV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //TODO: Alert dialog for cancel package booking confirmation
+                Toast.makeText(mContext, "Test", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
@@ -67,6 +77,8 @@ public class PackageBookingAdapter extends RecyclerView.Adapter<PackageBookingAd
         TextView bookingNameTV;
         @BindView(R.id.tv_booking_date)
         TextView bookingDateTV;
+        @BindView(R.id.iv_cancel_booking)
+        ImageView cancelBookingIV;
 
         private PackageBookingVH(@NonNull View view) {
             super(view);

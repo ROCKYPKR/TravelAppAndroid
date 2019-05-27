@@ -189,4 +189,12 @@ public interface ApiInterface {
             @Header("Authorization") String apiToken
     );
 
+    //delete hotel booking (cancel hotel booking)
+    @Headers({"Content-type: application/json", "Accept: application/json"})
+    @DELETE("api/hotelbooking/{booking_id}")
+    Call<MinimalResponse> deleteHotelBooking(
+            @Path("booking_id") int bookingId,
+            @Header("Authorization") String apiToken
+    );
+
 }

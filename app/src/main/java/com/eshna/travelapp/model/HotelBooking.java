@@ -4,13 +4,13 @@ import com.google.gson.annotations.SerializedName;
 
 public class HotelBooking {
     @SerializedName("user_id")
-    private String userId;
+    private int userId;
     @SerializedName("hotel_id")
-    private String hotelId;
+    private int hotelId;
     @SerializedName("created_at")
     private String created_at;
     @SerializedName("id")
-    private String bookingId;
+    private int bookingId;
     @SerializedName("booked_for")
     private String bookedDate; //date
     @SerializedName("user")
@@ -20,7 +20,7 @@ public class HotelBooking {
     @SerializedName("status")
     private String status;
 
-    public HotelBooking(String userId, String hotelId, String created_at, String bookingId, String bookedDate, User user, Hotel hotel, String status) {
+    public HotelBooking(int userId, int hotelId, String created_at, int bookingId, String bookedDate, User user, Hotel hotel, String status) {
         this.userId = userId;
         this.hotelId = hotelId;
         this.created_at = created_at;
@@ -31,11 +31,11 @@ public class HotelBooking {
         this.status = status;
     }
 
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public String getHotelId() {
+    public int getHotelId() {
         return hotelId;
     }
 
@@ -43,7 +43,7 @@ public class HotelBooking {
         return created_at;
     }
 
-    public String getBookingId() {
+    public int getBookingId() {
         return bookingId;
     }
 
