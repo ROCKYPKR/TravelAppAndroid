@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity
                 startActivity(new Intent(MainActivity.this, ProfileActivity.class));
                 break;
             case R.id.nav_about:
-                Toast.makeText(this, getResources().getString(R.string.not_implemented), Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainActivity.this, AboutUsActivity.class));
                 break;
             case R.id.nav_share:
                 Toast.makeText(this, getResources().getString(R.string.not_implemented), Toast.LENGTH_SHORT).show();

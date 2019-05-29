@@ -53,12 +53,15 @@
     <string name="no">No</string>
     <string name="enter_new_password">Enter new password</string>
     <string name="change">Change</string>
+
     <string name="no_reviews_found">No reviews found</string>
+
     <string name="my_bookings">My Bookings</string>
     <string name="hotel_bookings">Hotel Bookings</string>
     <string name="package_bookings">Package Bookings</string>
     <string name="confirm_book_this">Book this?</string>
     <string name="book">Book</string>
+
     <string name="hint_write_review">Please write your review here</string>
     <string name="save">Save</string>
     <string name="confirm_booking">Confirm Booking</string>
@@ -67,11 +70,16 @@
     <string name="no_package_bookings">No Package Bookings!</string>
     <string name="no_hotel_bookings">No Hotel Bookings!</string>
     <string name="done">Done</string>
+
     <string name="confirm_exit_message">Are you sure you want to exit the App?</string>
     <string name="confirm_exit_title">Confirm Exit?</string>
+
     <string name="confirm_delete_review">Are you sure you want to delete this review?</string>
     <string name="delete">Delete</string>
+
     <string name="confirm_cancel_booking_message">Are you sure you want to cancel this booking?</string>
     <string name="confirm_cancel_booking">Confirm Cancel Booking</string>
+
+    <string name="easy_way_about_us_description">EasyWay is a platform to find new places, book hotel or tour package and review and rate them. EasyWay is based in Nepal and aims to promote tourism in Nepal</string>
 
 </resources>
