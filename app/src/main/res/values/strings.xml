@@ -38,12 +38,10 @@
     <string name="gender_hint">Gender</string>
     <string name="no_hotels_found">No Hotels Found</string>
     <string name="no_packages_found">No Packages Found</string>
+
     <string name="about">About</string>
     <string name="reviews">Reviews</string>
     <string name="map">Map</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!--Profile Strings-->
     <string name="action_change_password">Change password</string>
@@ -51,8 +49,10 @@
     <string name="log_out_confirmation">Are you sure you want to log out?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+
     <string name="enter_new_password">Enter new password</string>
     <string name="change">Change</string>
+    <string name="change_pass_info_text">Important: You will be logged out on successful password change.</string>
 
     <string name="no_reviews_found">No reviews found</string>
 

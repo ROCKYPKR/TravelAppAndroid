@@ -62,7 +62,7 @@ public interface ApiInterface {
      */
     @Headers({"Content-type: application/json", "Accept: application/json"})
     @PUT("api/user/updatepassword")
-    Call<UserResponse> updatePassword(
+    Call<MinimalResponse> updatePassword(
             @Header("Authorization") String apiToken,
             @Body Map<String, String> newPassword
     );

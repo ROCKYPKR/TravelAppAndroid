@@ -2,12 +2,16 @@ package com.eshna.travelapp.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +23,7 @@ import android.widget.Toast;
 import com.eshna.travelapp.R;
 import com.eshna.travelapp.api.ApiClient;
 import com.eshna.travelapp.api.ApiInterface;
+import com.eshna.travelapp.apiResponse.MinimalResponse;
 import com.eshna.travelapp.apiResponse.UserResponse;
 import com.eshna.travelapp.model.User;
 import com.eshna.travelapp.utility.UserLocalStore;
@@ -34,7 +39,7 @@ import retrofit2.Response;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    private static final String LOG_TAG = ProfileActivity.class.getSimpleName();
+    private static final String TAG = ProfileActivity.class.getSimpleName();
 
     @BindView(R.id.tv_name_initials)
     TextView nameInitialsTV;
@@ -58,7 +63,7 @@ public class ProfileActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         ActionBar actionBar = getSupportActionBar();
-        if (actionBar!=null){
+        if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
@@ -108,8 +113,7 @@ public class ProfileActivity extends AppCompatActivity {
                 User user = userLocalStore.getLoggedInUser();
 
 
-
-                if (!nameET.getText().toString().trim().equals(user.getName()) && !nameET.getText().toString().isEmpty()){
+                if (!nameET.getText().toString().trim().equals(user.getName()) && !nameET.getText().toString().isEmpty()) {
                     //name is updated and is not empty
                     String name = nameET.getText().toString().trim();
 
@@ -134,38 +138,92 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void displayPasswordChangeDialog() {
-        Toast.makeText(this, R.string.not_implemented, Toast.LENGTH_SHORT).show();
-        //TODO:Dialog Fragment required to work with the view
-//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//        builder.setView(R.layout.dialog_change_password)
-//                .setCancelable(true)
-//                .setPositiveButton(R.string.change, new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int i) {
-//                        //TODO:hit change password api
-//                        if ()
-//                        changePasswordAPI();
-//                    }
-//                })
-//                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int i) {
-//                        dialogInterface.dismiss();
-//                    }
-//                });
-//        AlertDialog dialog = builder.create();
-//        dialog.show();
+
+        LayoutInflater layoutInflater = LayoutInflater.from(this);
+        View promptView = layoutInflater.inflate(R.layout.dialog_change_password, null);
+
+        final AlertDialog alertD = new AlertDialog.Builder(this).create();
+
+        final TextInputLayout newPassTIL1 = promptView.findViewById(R.id.til_new_pass1);
+        final TextInputLayout newPassTIL2 = promptView.findViewById(R.id.til_new_pass2);
+        final TextInputEditText newPassET1 = promptView.findViewById(R.id.change_pass_1);
+        final TextInputEditText newPassET2 = promptView.findViewById(R.id.change_pass_2);
+
+
+        TextView tvDone = promptView.findViewById(R.id.tv_done_change_pass);
+        TextView tvCancel = promptView.findViewById(R.id.tv_cancel_change_pass);
+
+        tvDone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (TextUtils.isEmpty(newPassET1.getText())) {
+                    newPassTIL1.setError("Please provide a new Password");
+                    return;
+                }
+
+                if (TextUtils.isEmpty(newPassET2.getText())) {
+                    newPassTIL2.setError("Please confirm the password");
+                    return;
+                }
+
+                if (!TextUtils.equals(newPassET1.getText(), newPassET2.getText())) {
+                    newPassTIL2.setError("Passwords do not match");
+                    return;
+                }
+
+                //all validation passed
+                alertD.dismiss();
+
+                hitChangePasswordApi(newPassET2.getText().toString().trim());
+
+
+            }
+        });
+
+        tvCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertD.dismiss();
+            }
+        });
+
+        alertD.setView(promptView);
+
+        alertD.show();
     }
 
-    private void changePasswordAPI() {
-//        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-//
-//        UserLocalStore userLocalStore = new UserLocalStore(getApplicationContext());
-//
-//        HashMap<String, String> newPass = new HashMap<>();
-//        newPass.put("new_password", name);
-//
-//        Call call = apiInterface.updatePassword(userLocalStore.getLoggedInUser().getApiToken(), );
+    private void hitChangePasswordApi(String newPassword) {
+        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+
+        UserLocalStore userLocalStore = new UserLocalStore(getApplicationContext());
+
+        HashMap<String, String> newPass = new HashMap<>();
+        newPass.put("new_password", newPassword);
+
+        Call<MinimalResponse> call = apiInterface.updatePassword(userLocalStore.getLoggedInUser().getApiToken(), newPass);
+
+        call.enqueue(new Callback<MinimalResponse>() {
+            @Override
+            public void onResponse(@NonNull Call<MinimalResponse> call, @NonNull Response<MinimalResponse> response) {
+                Log.d(TAG, "onResponse: " + response.message());
+                Log.d(TAG, "onResponse: " + response.code());
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        Toast.makeText(ProfileActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        logUserOut();
+
+                    } else {
+                        Log.e(TAG, "onResponse: Response body is null");
+                    }
+
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<MinimalResponse> call, @NonNull Throwable t) {
+
+            }
+        });
     }
 
     private void displayLogOutConfirmation() {
@@ -177,7 +235,8 @@ public class ProfileActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         logUserOut();
-                    }})
+                    }
+                })
                 .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -207,15 +266,15 @@ public class ProfileActivity extends AppCompatActivity {
         ApiInterface apiInterface =
                 ApiClient.getClient().create(ApiInterface.class);
 
-        Log.d(LOG_TAG, updatedUserDetails.toString());
+        Log.d(TAG, updatedUserDetails.toString());
 
-        Call call = apiInterface.getUpdatedUser(apiToken, updatedUserDetails);
+        Call<UserResponse> call = apiInterface.getUpdatedUser(apiToken, updatedUserDetails);
 
         call.enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(@NonNull Call<UserResponse> call, @NonNull Response<UserResponse> response) {
-                Log.d(LOG_TAG, String.valueOf(response.code()));
-                Log.d(LOG_TAG, response.toString());
+                Log.d(TAG, String.valueOf(response.code()));
+                Log.d(TAG, response.toString());
 
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
@@ -227,10 +286,10 @@ public class ProfileActivity extends AppCompatActivity {
                             userLocalStore.setUserLoggedIn(true); //set boolean user logged in
                         }
                     } else {
-                        Log.e(LOG_TAG, " Response body is null");
+                        Log.e(TAG, " Response body is null");
                     }
                 } else {
-                    Log.e(LOG_TAG, " Response is not successful");
+                    Log.e(TAG, " Response is not successful");
                 }
 
                 hideProgressBar();
@@ -239,7 +298,7 @@ public class ProfileActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(@NonNull Call<UserResponse> call, @NonNull Throwable t) {
-                Log.e(LOG_TAG, " onFailure " + t.toString());
+                Log.e(TAG, " onFailure " + t.toString());
                 t.printStackTrace();
                 Toast.makeText(ProfileActivity.this, "Failure", Toast.LENGTH_SHORT).show();
                 hideProgressBar();
